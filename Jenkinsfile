@@ -1,10 +1,10 @@
 pipeline {
     agent any 
     options {
-        buildDiscarder(logRotator(numToKeepstr: '1'))
+        buildDiscarder(logRotator(numToKeepStr: '1'))
     }
     stages {
-        stage ('Build') {
+        stage('Build') {
             steps {
                 echo "hello World"
             }
