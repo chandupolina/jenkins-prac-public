@@ -8,7 +8,7 @@ pipeline {
             when {
                 not {
                     equals expected:'5', actual: "${BUILD_NUMBER}"
-                }
+                } 
             }
             steps {
                 echo "deployin when this condition doesnt mets"
