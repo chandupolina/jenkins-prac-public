@@ -7,7 +7,7 @@ pipeline {
                     input(
                         message: 'Are you building the application',
                         ok: 'yes',
-                        submitter: 'chandu'
+                        submitter: 'ram'
                     )
                 }
                 echo "deploying in prod with submitter approval" 
