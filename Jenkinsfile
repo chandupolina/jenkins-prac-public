@@ -1,17 +1,13 @@
 pipeline {
-    agent any
+    agent any 
+    options {
+        buildDiscarder(logRotator(numToKeepstr: '1'))
+    }
     stages {
-        stage('deploy') {
+        stage ('Build') {
             steps {
-                timeout(time: 300, unit: 'SECONDS') {
-                    input(
-                        message: 'Are you building the application',
-                        ok: 'yes',
-                        submitter: 'chandu,ram'
-                    )
-                }
-                echo "deploying in prod with submitter approval"
-            }   
+                echo "hello World"
+            }
         }
     }
 }
