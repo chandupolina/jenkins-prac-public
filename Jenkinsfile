@@ -1,34 +1,15 @@
 pipeline {
-    agent {
-        label 'java-slave'
-    }
+    agent any
     stages {
-        stage ('paralllel_stages') {
-            parallel {
-                stage ('buid') {
-                    steps {
-                        echo "building stage "
-                        sh "sleep 15"
-                    }
-                }
-                stage ('sonar scan') {
-                    steps {
-                        echo "code analysis"
-                        sh "sleep 15"
-                    }
-                }
-                stage ('deploy') {
-                    steps {
-                        echo "deploying to prod"
-                        sh "sleep 30"
-                    }
-                }
-            }
-        }
-        stage (' second stage ') {
+        stage ('deploy')
             steps {
-                echo " second stage "
-            }
-        }
+                timeout (time:300 , unit:'SECONDS')
+                input {
+                    message: 'Are you building the application'
+                    ok:'yes'
+                    submitter:'chandu'
+                }
+                echo " deploying in prod with submitter approval"
+            }   
     }
 }
