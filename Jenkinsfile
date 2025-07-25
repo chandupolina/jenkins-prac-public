@@ -1,13 +1,17 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage ('Build') {
+        stage('deploy') {
             steps {
-                timeout (time: 300, unit:'SECONDS'){ // 5min approval.....s
-                    input message: 'Are you Building the applicaiton', ok: 'yes', submitter: 'siva, maha'
+                timeout(time: 300, unit: 'SECONDS') {
+                    input(
+                        message: 'Are you building the application',
+                        ok: 'yes',
+                        submitter: 'chandu,siva'
+                    )
                 }
-                echo "Builing the applicaiton"
-            }
+                echo "deploying in prod with submitter approval"
+            }   
         }
     }
 }
