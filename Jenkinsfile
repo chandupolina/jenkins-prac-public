@@ -8,7 +8,7 @@ pipeline {
             When {
                 equals expected: 'Production', actual: '${DEPLOY_TO}'
             steps {
-                echo " Deploying to Production"
+                echo " Deploying to Production" 
             }
             }
             
