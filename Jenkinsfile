@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ('deploy')
+        stage ('deploy') {
             steps {
                 timeout (time:300 , unit:'SECONDS')
                 input {
@@ -12,4 +12,5 @@ pipeline {
                 echo " deploying in prod with submitter approval"
             }   
     }
+}
 }
