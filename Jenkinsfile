@@ -10,7 +10,7 @@ pipeline {
                         submitter: 'chandu'
                     )
                 }
-                echo "deploying in prod with submitter approval"
+                echo "deploying in prod with submitter approval" 
             }   
         }
     }
