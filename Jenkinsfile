@@ -4,12 +4,12 @@ pipeline {
         DEPLOY_TO = 'Production'
     }
     stages {
-        stage ('Deploy') {
+        stage ('Deploy'){
             When {
                 equals expected: 'Production', actual: '${DEPLOY_TO}'
-            steps { 
-                echo " Deploying to Production" 
             }
+            steps {
+                echo " Deploying to Production"
             }
             
         }
