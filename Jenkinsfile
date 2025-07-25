@@ -1,17 +1,33 @@
 pipeline {
-    agent any
-    environment {
-        DEPLOY_TO = 'production'
+    agent {
+        label 'java-slave'
     }
     stages {
-        stage ('deploy') {
-            when {
-                not {
-                    equals expected:'5', actual: "${BUILD_NUMBER}"
-                } 
+        stage ('paralllel_stages') {
+            parallel {
+                stage ('buid') {
+                    steps {
+                        echo "building stage "
+                        sh "sleep 15"
+                    }
+                }
+                stage ('sonar scan') {
+                    steps {
+                        echo "code analysis"
+                        sh "sleep 15"
+                    }
+                }
+                stage ('deploy') {
+                    steps {
+                        echo "deploying to prod"
+                        sh "sleep 15"
+                    }
+                }
             }
+        }
+        stage (' second stage ') {
             steps {
-                echo "deployin when this condition doesnt mets"
+                echo " second stage "
             }
         }
     }
