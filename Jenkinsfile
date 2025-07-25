@@ -1,4 +1,3 @@
-
 pipeline {
     agent any 
     environment {
@@ -8,10 +7,11 @@ pipeline {
         stage ('Deploy') {
             When {
                 equals expected: 'Production', actual: '${DEPLOY_TO}'
-            }
             steps {
                 echo " Deploying to Production"
             }
+            }
+            
         }
     }
 }
